@@ -115,7 +115,8 @@
     font-size: 3rem;
     font-weight: 600;
     overflow-wrap: normal;
-    width: 34%;
+    width: 40%;
+    letter-spacing: 1.5px;
     text-align: center;
     margin-bottom: 0;
 }
@@ -168,7 +169,7 @@
     background-color: #000000;
 }
 
-.login-info hr {
+.login-info-hr {
     background-color: #222222;
     height: .5rem;
     border: none;
@@ -202,6 +203,60 @@
     width: 26rem;
 }
 
+.login-info-faq {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
 
+.login-info-faq h2{
+    font-size: 3.5rem;
+    font-weight: 600;
+}
+
+.questions {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    row-gap: .5rem;
+    width: 100%;
+}
+
+.question {
+    width: 60%;
+}
+
+.question-text {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #303030;
+}
+
+
+.question-text h3 {
+    margin-left: 1rem;
+    font-size: 1.5rem;
+    font-weight: 400;
+}
+
+.question-text button {
+    padding-right: 2rem;
+    font-size: 2rem;
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+    color: white;
+}
+
+.answer {
+    display: none;
+    margin-top: 1.5px;
+    background-color: #303030;
+    padding: 1rem;
+}
 
 

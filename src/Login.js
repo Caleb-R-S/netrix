@@ -2,6 +2,7 @@ import React from "react";
 import LoginNavBar from "./components/login/LoginNavBar";
 import LoginCenterPiece from "./components/login/LoginCenterPiece";
 import LoginInfo from "./components/login/LoginInfo";
+import LoginFAQ from "./components/login/LoginFAQ";
 import background from './images/background.jpg'
 import './components/login-style.css'
 
@@ -38,6 +39,7 @@ function Login() {
                     img={'./images/login/young-rick.png'}
                     align='left'
                 />
+                <LoginFAQ />
             </div>
 
         </div>

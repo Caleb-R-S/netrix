@@ -3,7 +3,7 @@ import React from "react";
 function LoginInfo(props) {
     return (
         <div className="login-info">
-            <hr/>
+            <hr className="login-info-hr"/>
             <div className="login-info-body">
                 {props.align === 'left' && <img src={props.img} />}
                 <div className="login-info-text">
