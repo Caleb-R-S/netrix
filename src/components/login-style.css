@@ -1,0 +1,207 @@
+.login {
+    background-image: url('../images/background.jpg');
+    background-repeat: no-repeat;
+    /* background-position-y: -2rem;  */
+    /* background-position-x: -5rem; */
+    background-size: cover;
+    height: 100vh;
+}
+
+.gradient {
+    background-image: radial-gradient(#000000ba, #36363680);
+    width: 100%;
+    height: 100%;
+}
+
+
+.login-navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 2rem;
+    padding-right: 4rem;
+}
+
+.login-navbar h2 {
+    color: #333C5F;
+    margin-right: auto;
+    font-size: 2.5rem;
+    margin-top: 1rem;
+    letter-spacing: 2px;
+}
+
+
+.login-navbar button {
+    background-color: #333C5F;
+    color: white;
+    border: none;
+    font-size: 1rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    padding-top: .5rem;
+    padding-bottom: .5rem;
+    border-radius: 4px;
+    cursor: pointer;
+    height: 2.5rem;
+}
+
+.languages-drop-down {
+    position: relative;
+    display: block;
+    margin-right: 2rem;
+    background-color: rgb(45, 44, 44);
+    border: white 1px solid;
+    padding: .5rem 1rem;
+    border-radius: 4px;
+}
+
+.languages-drop-down span {
+    font-size: 1rem;
+    margin-left: .8rem;
+    color: white;
+    padding: 1rem 0rem;
+}
+
+.triangle {
+    font-size: .8rem !important;
+}
+
+.languages-drop-down img{
+    width: 1rem;
+    filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(80deg) brightness(800%) contrast(100%);
+    margin: 0rem 0rem -.1rem 0rem;
+}
+
+.languages {
+    display: none;
+    position: absolute;
+    z-index: 1;
+    margin-top: .5rem;
+    margin-left: -1rem;
+    text-align: left;
+}
+
+.languages-drop-down:hover .languages {
+    display: block;
+    background-color: rgb(31, 31, 31);
+    min-width: 8rem;
+    border-radius: 4px;
+}
+
+.languages span {
+    display: block;
+    text-align: left;
+    padding: .2rem .2rem;
+    padding-left: .5rem;
+    margin-left: -.01rem;
+    border-radius: 4px;
+}
+
+.languages span:hover {
+    background-color: grey;
+}
+
+.login-center-piece {
+    color: white;
+    width: 100%;
+    display: flex;
+    margin-top: 8rem;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-center-piece h1{
+    font-size: 3rem;
+    font-weight: 600;
+    overflow-wrap: normal;
+    width: 34%;
+    text-align: center;
+    margin-bottom: 0;
+}
+
+.login-center-piece h2 {
+    font-weight: 400;
+}
+
+.email-component {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.email-entry {
+    padding-top: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40%;
+}
+
+.email-entry input {
+    height: 2.2rem;
+    width: 64%;
+    padding: 8px;
+    border-radius: 2px 0px 0px 2px;
+    border: none;
+}
+
+.email-entry button {
+    height: 3.2rem;
+    color: white;
+    font-size: 1.2rem;
+    background-color: #333C5F;
+    border: none;
+    border-radius: 0px 2px 2px 0px;
+    padding: 0 1rem;
+}
+
+.email-entry button:hover {
+    background-color: #3b4366;
+}
+
+/* Login info */
+
+.info-section {
+    background-color: #000000;
+}
+
+.login-info hr {
+    background-color: #222222;
+    height: .5rem;
+    border: none;
+    margin: 0;
+    padding: 0;
+}
+
+.login-info-body {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+    padding: 4rem 4rem;
+}
+
+.login-info-text {
+    width: 50%;
+}
+
+.login-info-text h2 {
+    font-size: 3rem;
+    font-weight: 600;
+}
+
+.login-info-text h3 {
+    font-size: 1.5rem;
+    font-weight: 400;
+}
+
+.login-info-body img {
+    width: 26rem;
+}
+
+
+
+
