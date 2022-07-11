@@ -3,8 +3,10 @@ import LoginNavBar from "./components/login/LoginNavBar";
 import LoginCenterPiece from "./components/login/LoginCenterPiece";
 import LoginInfo from "./components/login/LoginInfo";
 import LoginFAQ from "./components/login/LoginFAQ";
-import background from './images/background.jpg'
-import './components/login-style.css'
+import Footer from "./components/Footer";
+// import background from './images/background.jpg'
+import './components/login-style.css';
+import './components/style.css';
 
 
 function Login() {
@@ -40,8 +42,9 @@ function Login() {
                     align='left'
                 />
                 <LoginFAQ />
+                <hr className="login-info-hr" />
+                <Footer />
             </div>
-
         </div>
     );
 }
