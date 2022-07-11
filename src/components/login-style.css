@@ -32,17 +32,7 @@
 
 
 .login-navbar button {
-    background-color: #333C5F;
-    color: white;
-    border: none;
-    font-size: 1rem;
-    padding-left: 1rem;
-    padding-right: 1rem;
-    padding-top: .5rem;
-    padding-bottom: .5rem;
-    border-radius: 4px;
-    cursor: pointer;
-    height: 2.5rem;
+
 }
 
 .languages-drop-down {
@@ -221,12 +211,13 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    row-gap: .5rem;
+    row-gap: 1rem;
     width: 100%;
 }
 
 .question {
     width: 60%;
+    cursor: pointer;
 }
 
 .question-text {
@@ -243,7 +234,7 @@
     font-weight: 400;
 }
 
-.question-text button {
+.question-text span {
     padding-right: 2rem;
     font-size: 2rem;
     cursor: pointer;
@@ -252,9 +243,21 @@
     color: white;
 }
 
-.answer {
-    display: none;
-    margin-top: 1.5px;
+
+.answer-hidden {
+    overflow: hidden;
+    /* margin-top: -6rem;  */
+    max-height: 0;
+    padding: 1rem;
+    opacity: 0;
+    transition: all .5s ease-in-out;
+}
+
+.answer-shown {
+    transition: all .5s ease-in-out;
+    /* height: 6rem; */
+    max-height: fit-content;
+    margin-top: 1px;
     background-color: #303030;
     padding: 1rem;
 }

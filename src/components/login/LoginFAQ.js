@@ -1,4 +1,5 @@
 import React from "react";
+import { nanoid } from "nanoid";
 
 function LoginFAQ() {
     
@@ -6,31 +7,35 @@ function LoginFAQ() {
         {
             question: 'What is netflix?', 
             answer: 'This is the answer to all of your questions about rick astley. This answer needs to be very long, very very very long. This is a little boring but it will all be worth it',
-            displayAnswer: false
+            displayAnswer: false,
+            id: nanoid()
         },
         {
             question: 'What is netflix?', 
             answer: 'This is the answer to all of your questions about rick astley. This answer needs to be very long, very very very long. This is a little boring but it will all be worth it',
-            displayAnswer: false
+            displayAnswer: false,
+            id: nanoid()
         },
         {
             question: 'What is netflix?', 
             answer: 'This is the answer to all of your questions about rick astley. This answer needs to be very long, very very very long. This is a little boring but it will all be worth it',
-            displayAnswer: false
+            displayAnswer: false,
+            id: nanoid()
         },
         {
             question: 'What is netflix?', 
             answer: 'This is the answer to all of your questions about rick astley. This answer needs to be very long, very very very long. This is a little boring but it will all be worth it',
-            displayAnswer: false
+            displayAnswer: false,
+            id: nanoid()
         }
     ]);
 
-    function toggleDisplay() {
+    function toggleDisplay(id) {
         setFaqs((prevFaqs) => {
             return prevFaqs.map((question => {
                 return ({
                     ...question,
-                    displayAnswer: !question.displayAnswer
+                    displayAnswer: id === question.id ? !question.displayAnswer : false
                 }); 
             }));
         });
@@ -38,12 +43,12 @@ function LoginFAQ() {
 
     const questionElements = faqs.map((question) => {
         return (
-            <div className="question">
+            <div className="question" onClick={() => toggleDisplay(question.id)}>
                 <div className="question-text">
                     <h3>{question.question}</h3>
-                    <button onClick={toggleDisplay}>+</button>
+                    <span>+</span>
                 </div>
-                <div className="answer" style={{display: question.displayAnswer ? 'block' : 'none'}}>
+                <div className={question.displayAnswer ? "answer-shown" : "answer-hidden"}>
                     <p>{question.answer}</p>
                 </div>
             </div>
