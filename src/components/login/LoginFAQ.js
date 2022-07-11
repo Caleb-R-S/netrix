@@ -49,7 +49,7 @@ function LoginFAQ() {
                     <span>+</span>
                 </div>
                 <div className={question.displayAnswer ? "answer-shown" : "answer-hidden"}>
-                    <p>{question.answer}</p>
+                    <p className={question.displayAnswer ? "answer-text-shown" : "answer-text-hidden"}>{question.answer}</p>
                 </div>
             </div>
         );
