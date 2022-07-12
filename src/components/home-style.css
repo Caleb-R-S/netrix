@@ -2,12 +2,18 @@
     padding: 2rem;
     background-color: #303030;
     color: white;
+    overflow: hidden;
 }
 .genre {
     display: flex;
     flex-direction: column;
     padding: 1rem 2rem;
     color: white;
+}
+
+.genre h2 {
+    margin: 0;
+    margin-bottom: .5rem;
 }
 
 .movie-row {
