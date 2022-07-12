@@ -1,4 +1,6 @@
 import React from "react";
+import { motion } from "framer-motion";
+import styled from "styled-components";
 import thumb from '../../images/home/thumb.svg';
 import check from '../../images/home/check.svg';
 import down from '../../images/home/down.svg';
@@ -6,45 +8,82 @@ import play from '../../images/home/play.svg';
 
 function Movie(props) {
 
+    const MovieMovement = {
+        hidden: {
+            scale: 1,
+        },
+        hover: {
+            scale: 1.3,
+            zIndex: 2
+        }
+    }
 
+    const InfoMovement = {
+        hidden: {
+            backgroundColor: '#303030',
+            zIndex: -1,
+            marginTop: '-4rem',
+            opacity: 0
+        },
+        hover: {
+            marginTop: '0rem',     
+            opacity: 1
+        }
 
-    let style = {
-        display : props.selected ? 'block' : 'none',
-        borderRadius: "4px"
     }
 
 
     return (
-        // https://www.w3schools.com/cssref/playdemo.asp?filename=playcss_box-shadow
-        <div  onMouseLeave={props.shrink} onMouseEnter={props.grow} className="movie">
+        <motion.div 
+            className="movie"
+            variants={MovieMovement}
+            initial='hidden'
+            whileHover='hover'
+            animate='hidden'
+        >
             <img className="movie-img" src={props.src}/>
-            <div className="movie-info" style={style}>
+            <MovieInfo
+                variants={InfoMovement}
+            >
                 <div className="movie-buttons">
-                    <Icon src={play} icon="play"/>
-                    <Icon src={check} icon="check"/>
-                    <Icon src={thumb} icon="thumb"/>
-                    <Icon src={down} icon="down"/>
+                    <Icon src={play} icon="play" play={() => props.play()} />
+                    <Icon src={check} icon="check" play={() => props.play()} />
+                    <Icon src={thumb} icon="thumb" play={() => props.play()} />
+                    <Icon src={down} icon="down" play={() => props.play()} />
                 </div>
                 <div className="movie-rating">
                 </div>
                 <div className="descriptive-words">
 
                 </div>
-            </div>
-        </div>
+            </MovieInfo>
+        </motion.div>
     );
 }
 
 
 function Icon(props) {
+    console.log(props)
     const style = {
-        marginRight: props.icon === 'thumb' ? 'auto' : ''
+        marginRight: props.icon === 'thumb' ? 'auto' : '',
+        cursor: 'pointer'
     }
     return (
-        <div className={"movie-icon"} style={style}>
-            <img src={props.src}/> 
+        <div 
+            className={"movie-icon"} 
+            style={style}
+            onClick={props.play}
+        >
+            <img src={props.src} /> 
         </div>
     );
 }
+
+const MovieInfo = styled(motion.div)`
+    box-shadow: 0px 0px 8px black;
+    background-color: blue;
+    border-radius: 4px;
+    z-index: -1;
+`;
 
 export default Movie;

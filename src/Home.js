@@ -1,7 +1,6 @@
 import React from "react";
-
 import Movie from "./components/home/Movie";
-
+import RickRoll from "./components/home/RickRoll";
 import './components/home-style.css';
 import { nanoid } from "nanoid";
 
@@ -14,6 +13,11 @@ function Home() {
     ]
 
     const [allMovies, setAllMovies] = React.useState(Array(4).fill(Array(6).fill({})));
+    const [playVideo, setPlayVideo] = React.useState(false);
+
+    function toggleVideo() {
+        setPlayVideo(prevState => !prevState);
+    }
 
     function init() {
         setAllMovies(prevState => {
@@ -25,7 +29,6 @@ function Home() {
                         src: `https://picsum.photos/300/175?random=${randomImage}`,
                         withInfo: false,
                         id: `${genreIndex}${index}`,
-                        selected: false
                     }
                 });
             });
@@ -36,22 +39,6 @@ function Home() {
         init();
     }, []);
 
-
-    function toggleSelection(id, selected) {
-        console.log(selected)
-        setAllMovies(prevState => {
-            return prevState.map((genre, genreIndex) => {
-                return genre.map((movie, index) => {
-                    console.log('MOVIE ID: ' + movie.id + " ID: " + id + " " + (id === movie.id))
-                    return {
-                        ...movie,
-                        selected: id === movie.id ? selected : false
-                    }
-                });
-            });
-        });
-    }
-    
     const genresElements = allMovies.map((genre, index) => {
             return (
                 <div className="genre" key={nanoid()}>
@@ -62,10 +49,8 @@ function Home() {
                                 return (
                                     <Movie 
                                         id={movie.id} 
-                                        selected={movie.selected} 
                                         src={movie.src}
-                                        grow={() => toggleSelection(movie.id, true)}
-                                        shrink={() => toggleSelection(movie.id, false)}
+                                        play={toggleVideo}
                                         key={nanoid()}
                                     />
                                 ); 
@@ -75,12 +60,11 @@ function Home() {
                 </div>
             );
         })
-    
+    console.log(playVideo);
     return (
         <div className="home">
             <h1>HOME</h1>
-            {/* <iframe width="560" height="315" src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> */}
-            {genresElements}
+            {playVideo ? <RickRoll closeVideo={toggleVideo}/> : <>{genresElements}</>}
         </div>
     );
 }
