@@ -15,7 +15,8 @@ function Movie(props) {
 
 
     return (
-        <div onMouseLeave={props.shrink} onMouseEnter={props.grow} className="movie">
+        // https://www.w3schools.com/cssref/playdemo.asp?filename=playcss_box-shadow
+        <div  onMouseLeave={props.shrink} onMouseEnter={props.grow} className="movie">
             <img className="movie-img" src={props.src}/>
             <div className="movie-info" style={style}>
                 <div className="movie-buttons">
@@ -25,7 +26,6 @@ function Movie(props) {
                     <Icon src={down} icon="down"/>
                 </div>
                 <div className="movie-rating">
-
                 </div>
                 <div className="descriptive-words">
 

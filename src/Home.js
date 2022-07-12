@@ -1,4 +1,5 @@
 import React from "react";
+
 import Movie from "./components/home/Movie";
 
 import './components/home-style.css';
