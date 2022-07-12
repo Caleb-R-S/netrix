@@ -63,7 +63,6 @@ function Movie(props) {
 
 
 function Icon(props) {
-    console.log(props)
     const style = {
         marginRight: props.icon === 'thumb' ? 'auto' : '',
         cursor: 'pointer'

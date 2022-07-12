@@ -14,18 +14,32 @@ function Home() {
         "Comedy"
     ]
 
-    const [allMovies, setAllMovies] = React.useState(Array(4).fill(Array(6).fill({})));
+    const [allMovies, setAllMovies] = React.useState(Array(4).fill(0).map((val, index) => {
+        return ({
+            // For whatever reason, the init() in the use effect portion doesn't run if I don't initialize 
+            // The values that I need here
+            toggled: false,
+            distance: 'auto',
+            movies: [],
+            id: index
+        })
+    }));
     const [playVideo, setPlayVideo] = React.useState(false);
-    const [isMoved, setIsMoved] = React.useState({
-        toggled: false,
-        distance: 'auto'
-    });
 
-    function showNewMovies() {
-        setIsMoved(prevState => ({
-            distance: prevState.distance === 'auto' ? '-12rem': 'auto',
-            toggled: !prevState.toggled
-        }));
+    function showNewMovies(id) {
+        setAllMovies((prevState) => {
+            return prevState.map((genre) => {
+                let newDistance = genre.distance;
+                if (id === genre.id) {
+                    newDistance = genre.distance === 'auto' ? '-12rem': 'auto';
+                }
+                return ({
+                    ...genre,
+                    toggled: id === genre.id ? !genre.toggled : genre.toggled,
+                    distance: newDistance
+                });
+            });
+        });
     }
 
     function toggleVideo() {
@@ -35,14 +49,15 @@ function Home() {
     function init() {
         setAllMovies(prevState => {
             return prevState.map((genre, genreIndex) => {
-                return genre.map((movie, index) => {
-                    let randomImage = (genreIndex * 4) + index;
-                    console.log(randomImage)
-                    return {
-                        src: `https://picsum.photos/300/175?random=${randomImage}`,
-                        withInfo: false,
-                        id: `${genreIndex}${index}`,
-                    }
+                return ({
+                    ...genre,
+                    movies: Array(6).fill(0).map((movie, index) => {
+                        let randomImage = (genreIndex * 4) + index;
+                        return {
+                            src: `https://picsum.photos/300/175?random=${randomImage}`,
+                            id: `${genreIndex}${index}`,
+                        }
+                    }),
                 });
             });
         });
@@ -53,6 +68,7 @@ function Home() {
     }, []);
 
     const genresElements = allMovies.map((genre, index) => {
+            console.log(genre.toggled);
             return (
                 <motion.div 
                     className="genre" 
@@ -61,16 +77,16 @@ function Home() {
                     animate='hidden'
                     whileHover='hover'
                 >
-                   {isMoved.toggled && <LeftArrow
+                   {genre.toggled && <LeftArrow
                         variants={MoveVideosButtonAnimation}
-                        onClick={showNewMovies}
+                        onClick={() => showNewMovies(genre.id)}
                     >
                         {String.fromCodePoint(12296)}
                     </LeftArrow>} 
                     <h2>{genres[index]}</h2>
                     <div className="movie-row">
                         {
-                            genre.map(movie => {
+                            genre.movies.map(movie => {
                                 return (
                                     <Movie 
                                         id={movie.id} 
@@ -82,16 +98,17 @@ function Home() {
                             })
                         }
                     </div>
-                   {!isMoved.toggled && <RightArrow
+                   {!genre.toggled && <RightArrow
                         variants={MoveVideosButtonAnimation}
-                        onClick={showNewMovies}
+                        onClick={() => showNewMovies(genre.id)}
                     >
                         {String.fromCodePoint(12297)}
                     </RightArrow>} 
                 </motion.div>
             );
-        })
-    console.log(isMoved);
+    })
+    
+
     return (
         <div className="home">
             <h1>HOME</h1>
