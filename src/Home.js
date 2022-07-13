@@ -31,7 +31,7 @@ function Home() {
             return prevState.map((genre) => {
                 let newDistance = genre.distance;
                 if (id === genre.id) {
-                    newDistance = genre.distance === 'auto' ? '-12rem': 'auto';
+                    newDistance = genre.distance === 'auto' ? '-33%': 'auto';
                 }
                 return ({
                     ...genre,
@@ -76,6 +76,7 @@ function Home() {
                     initial='hidden'
                     animate='hidden'
                     whileHover='hover'
+                    distance={genre.distance}
                 >
                    {genre.toggled && <LeftArrow
                         variants={MoveVideosButtonAnimation}
@@ -125,6 +126,7 @@ const MoveVideosButtonAnimation = {
     },
     hover: {
         // display: 'flex',
+        // marginTop: '-1rem',
         opacity: 1,
         zIndex: 3
     }
