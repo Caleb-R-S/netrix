@@ -31,7 +31,7 @@ function Home() {
             return prevState.map((genre) => {
                 let newDistance = genre.distance;
                 if (id === genre.id) {
-                    newDistance = genre.distance === 'auto' ? '-33%': 'auto';
+                    newDistance = genre.distance === 'auto' ? '-32%': 'auto';
                 }
                 return ({
                     ...genre,
@@ -68,13 +68,12 @@ function Home() {
     }, []);
 
     const genresElements = allMovies.map((genre, index) => {
-            console.log(genre.toggled);
             return (
                 <MovieRow
                     className="genre" 
                     key={nanoid()}
                     initial='hidden'
-                    animate='hidden'
+                    // animate={{x: genre.distance, transition: {duration: 4}}} you can add 'transition and duration to control how long things take'
                     whileHover='hover'
                     distance={genre.distance}
                 >
@@ -121,12 +120,9 @@ function Home() {
 
 const MoveVideosButtonAnimation = {
     hidden: {
-        // display: 'none'
         opacity: 0
     },
     hover: {
-        // display: 'flex',
-        // marginTop: '-1rem',
         opacity: 1,
         zIndex: 3
     }
