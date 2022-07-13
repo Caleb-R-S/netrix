@@ -70,7 +70,7 @@ function Home() {
     const genresElements = allMovies.map((genre, index) => {
             console.log(genre.toggled);
             return (
-                <motion.div 
+                <MovieRow
                     className="genre" 
                     key={nanoid()}
                     initial='hidden'
@@ -81,7 +81,7 @@ function Home() {
                         variants={MoveVideosButtonAnimation}
                         onClick={() => showNewMovies(genre.id)}
                     >
-                        {String.fromCodePoint(12296)}
+                        <p>{String.fromCodePoint(12296)}</p>
                     </LeftArrow>} 
                     <h2>{genres[index]}</h2>
                     <div className="movie-row">
@@ -102,9 +102,9 @@ function Home() {
                         variants={MoveVideosButtonAnimation}
                         onClick={() => showNewMovies(genre.id)}
                     >
-                        {String.fromCodePoint(12297)}
+                        <p>{String.fromCodePoint(12297)}</p>
                     </RightArrow>} 
-                </motion.div>
+                </MovieRow>
             );
     })
     
@@ -132,38 +132,46 @@ const MoveVideosButtonAnimation = {
 
 const MovieRow = styled(motion.div)`
     dipslay: flex;
-    flex-direction: column;
+    gap: 1rem;
+    margin-left: ${({...props}) => props.distance}
 `;
 
 const RightArrow = styled(motion.button)`
-    background: linear-gradient(to right, #00000000, #000000FF);
+    background: radial-gradient(circle 5rem at 110% 50%, #000000FF, #00000000);
+    // background: linear-gradient(to right, #00000000, #000000FF);
     border: none;
     position: absolute;
     right: 0;
-    height: 175px;
-    margin-top: 2.5rem;
-    width: 4rem;
+    height: 200px;
+    margin-top: 1.75rem;
+    width: 6rem;
     color: white;
     display: flex;
     align-items: center;
     justify-content: flex-end;
     font-size: 1.5rem;
+    & p {
+        margin-right: -.75rem;
+    }
 `;
 
 
 const LeftArrow = styled(motion.button)`
-    background: linear-gradient(to right, #000000FF, #00000000);
+    background: radial-gradient(circle 5rem at -30% 50%, #000000FF, #00000000);
     border: none;
     position: absolute;
     left: 0;
-    height: 175px;
-    margin-top: 2.5rem;
-    width: 4rem;
+    height: 200px;
+    margin-top: 1.75rem;
+    width: 6rem;
     color: white;
     display: flex;
     align-items: center;
     justify-content: flex-start;
     font-size: 1.5rem;
+    & p {
+        margin-left: -.75rem;
+    }
 `;
 
 export default Home;

@@ -14,7 +14,7 @@ function Movie(props) {
         },
         hover: {
             scale: 1.3,
-            zIndex: 2
+            zIndex: 2,
         }
     }
 
